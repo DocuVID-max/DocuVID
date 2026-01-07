@@ -1,0 +1,6 @@
+
+body { font-family: 'Inter', sans-serif; }
+.navbar-brand { font-weight: 700; }
+.hero { background: linear-gradient(135deg,#0f2a44,#163d5c); color:white; }
+.section-padding { padding: 60px 0; }
+footer { background:#f8f9fa; }
