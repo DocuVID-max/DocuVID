@@ -45,7 +45,7 @@ body {
 /* Desktop */
 @media (min-width: 992px) {
   .logo-img {
-    height: 250px;
+    height: 64px;
   }
 }
 
@@ -55,9 +55,9 @@ body {
 }
 
 .logo-img {
-  height: 250px;        /* Layout-safe base size */
+  height: 64px;        /* Layout-safe base size */
   width: auto;
-  transform: scale(1.3); /* Visually enlarges logo */
+  transform: scale(1.1); /* Visually enlarges logo */
   transform-origin: left center;
 }
 
