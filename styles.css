@@ -3,6 +3,13 @@
   font-weight: 800;
 }
 
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1030; /* above content */
+  background: white;
+}
+
 @media (max-width: 768px) {
   .navbar-brand {
     font-size: 2.2rem;
