@@ -16,8 +16,8 @@ body {
   top: 0;
   z-index: 1030;
   background-color: #ffffff;
-  padding-top: 10px;
-  padding-bottom: 10px;
+  padding-top: 1px;
+  padding-bottom: 1px;
 }
 
 /* Brand container */
@@ -45,7 +45,7 @@ body {
 /* Desktop */
 @media (min-width: 992px) {
   .logo-img {
-    height: 200px;
+    height: 150px;
   }
 }
 
