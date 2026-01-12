@@ -1,6 +1,13 @@
 
-body { font-family: 'Inter', sans-serif; }
-.navbar-brand { font-weight: 700; }
+body { font-family: 'Inter', sans-serif; line-height:1.6; }
+.navbar-brand { font-weight:700; }
 .hero { background: linear-gradient(135deg,#0f2a44,#163d5c); color:white; }
-.section-padding { padding: 60px 0; }
+.section-padding { padding: 80px 0; }
+.icon-circle {
+  width:70px; height:70px; border-radius:50%;
+  background:#e7f1ff; display:flex;
+  align-items:center; justify-content:center;
+  margin:0 auto 20px;
+}
 footer { background:#f8f9fa; }
+.card:hover { transform: translateY(-4px); transition:0.3s; }
