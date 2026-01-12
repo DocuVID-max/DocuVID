@@ -7,7 +7,6 @@
 <title>Request Info | DocuVid</title>
 
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
 @keyframes softPulse {
@@ -18,16 +17,12 @@
 .pulse-btn { animation: softPulse 2.5s infinite; }
 
 @keyframes popIn {
-  from { opacity: 0; transform: scale(.92); }
+  from { opacity: 0; transform: scale(.95); }
   to { opacity: 1; transform: scale(1); }
 }
-.success-animate { animation: popIn .5s ease-out forwards; }
+.success-animate { animation: popIn .4s ease-out forwards; }
 
-.checkmark {
-  width: 72px;
-  margin: 0 auto 1rem;
-}
-
+.checkmark { width:72px; margin:0 auto 1rem; }
 .hp { display:none!important; }
 </style>
 </head>
@@ -42,19 +37,20 @@
       Transform complex corporate policies into clear, engaging video.
     </p>
 
-    <!-- FORM -->
-    <form id="requestForm" novalidate>
+    <!-- FORM (NO SUBMIT CAPABILITY) -->
+    <div id="formWrap">
 
-      <input class="hp" name="company">
+      <input class="hp" id="company">
 
-      <input class="form-control mb-3" name="name" placeholder="Your name" required>
-      <input class="form-control mb-3" type="email" name="email" placeholder="Work email" required>
-      <textarea class="form-control mb-4" name="message" rows="4" placeholder="Tell us about your organisation" required></textarea>
+      <input class="form-control mb-3" id="name" placeholder="Your name">
+      <input class="form-control mb-3" id="email" type="email" placeholder="Work email">
+      <textarea class="form-control mb-4" id="message" rows="4" placeholder="Tell us about your organisation"></textarea>
 
-      <button id="submitBtn" class="btn btn-primary btn-lg px-4 pulse-btn" type="submit">
+      <!-- NOT A SUBMIT BUTTON -->
+      <button id="sendBtn" class="btn btn-primary btn-lg px-4 pulse-btn" type="button">
         Submit Request
       </button>
-    </form>
+    </div>
 
     <!-- SUCCESS -->
     <div id="successMessage" class="d-none mt-5">
@@ -88,34 +84,35 @@
 </section>
 
 <script>
-document.getElementById("requestForm").addEventListener("submit", function (e) {
-  e.preventDefault();
+document.getElementById("sendBtn").addEventListener("click", function () {
 
-  const form = this;
-  const btn = document.getElementById("submitBtn");
-  const success = document.getElementById("successMessage");
-
+  const btn = this;
   btn.disabled = true;
   btn.textContent = "Sending…";
 
-  /* 🔥 SHOW THANK YOU NO MATTER WHAT */
+  const success = document.getElementById("successMessage");
+  const formWrap = document.getElementById("formWrap");
+
+  /* SHOW THANK YOU (UI ONLY) */
   setTimeout(() => {
-    form.classList.add("d-none");
+    formWrap.classList.add("d-none");
     success.classList.remove("d-none");
     success.classList.add("success-animate");
   }, 500);
 
-  /* 🔥 SEND IN BACKGROUND (NO BLOCKING) */
+  /* BACKGROUND SEND (NO REDIRECT POSSIBLE) */
+  const data = new FormData();
+  data.append("name", document.getElementById("name").value);
+  data.append("email", document.getElementById("email").value);
+  data.append("message", document.getElementById("message").value);
+
   fetch("https://formspree.io/f/mrebnqzp", {
     method: "POST",
-    body: new FormData(form),
+    body: data,
     headers: { Accept: "application/json" }
-  }).catch(() => {
-    // silently fail — UI already handled
-  });
+  }).catch(() => {});
 });
 </script>
 
 </body>
 </html>
-
