@@ -54,6 +54,13 @@ body {
   max-height: 100%;
 }
 
+.logo-img {
+  height: 64px;        /* Layout-safe base size */
+  width: auto;
+  transform: scale(1.3); /* Visually enlarges logo */
+  transform-origin: left center;
+}
+
 /* ================================
    HERO & SECTIONS
 ================================ */
