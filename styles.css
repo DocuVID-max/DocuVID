@@ -4,6 +4,7 @@
 body {
   font-family: 'Inter', sans-serif;
   line-height: 1.6;
+  color: #212529;
 }
 
 /* ================================
@@ -12,8 +13,8 @@ body {
 .navbar {
   position: sticky;
   top: 0;
-  z-index: 1030; /* Above page content */
-  background: #ffffff;
+  z-index: 1030;
+  background-color: #ffffff;
 }
 
 /* Brand container (image-based logo) */
@@ -21,19 +22,25 @@ body {
   display: flex;
   align-items: center;
   padding: 0;
+  margin-right: 1rem;
 }
 
 /* Logo image */
 .logo-img {
-  height: 36px;      /* Mobile + tablet */
+  height: 36px;            /* Mobile & tablet */
   width: auto;
   display: block;
 }
 
 @media (min-width: 992px) {
   .logo-img {
-    height: 40px;    /* Desktop */
+    height: 40px;          /* Desktop */
   }
+}
+
+/* Prevent navbar height jump */
+.navbar-brand img {
+  max-height: 100%;
 }
 
 /* ================================
@@ -41,11 +48,16 @@ body {
 ================================ */
 .hero {
   background: linear-gradient(135deg, #0f2a44, #163d5c);
-  color: white;
+  color: #ffffff;
 }
 
 .section-padding {
   padding: 80px 0;
+}
+
+.section {
+  padding: 60px 20px;
+  text-align: center;
 }
 
 .content-narrow {
@@ -69,18 +81,34 @@ body {
 }
 
 .card {
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: none;
 }
 
 .card:hover {
   transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+/* ================================
+   FEATURE LIST
+================================ */
+.feature-list {
+  max-width: 760px;
+  margin: 60px auto;
+  padding-left: 1rem;
+}
+
+.feature-list li {
+  margin-bottom: 12px;
 }
 
 /* ================================
    FOOTER
 ================================ */
 footer {
-  background: #f8f9fa;
+  background-color: #f8f9fa;
+  font-size: 0.95rem;
 }
 
 /* ================================
@@ -100,7 +128,7 @@ footer {
   }
 }
 
-/* Apply only to navbar Request Info button */
+/* Apply only to navbar primary CTA */
 .navbar .btn-primary {
   background-color: #0d6efd !important;
   color: #ffffff !important;
