@@ -27,7 +27,7 @@ body {
 
 /* Logo image */
 .logo-img {
-  height: 120px;            /* Mobile & tablet */
+  height: 1200px;            /* Mobile & tablet */
   width: auto;
   display: block;
 }
