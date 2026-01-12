@@ -39,7 +39,7 @@ header {
 
 /* LOGO IMAGE */
 .logo-img {
-  height: 42px;
+  height: 120px;
   width: auto;
   display: block;
 }
@@ -192,3 +192,4 @@ button:hover {
     height: 36px;
   }
 }
+
