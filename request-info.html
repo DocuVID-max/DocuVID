@@ -12,22 +12,55 @@
 <link rel="stylesheet" href="styles.css">
 
 <style>
-/* Subtle pulse animation */
+/* CTA pulse */
 @keyframes softPulse {
   0% { box-shadow: 0 0 0 0 rgba(13,110,253,0.45); }
   70% { box-shadow: 0 0 0 10px rgba(13,110,253,0); }
   100% { box-shadow: 0 0 0 0 rgba(13,110,253,0); }
 }
+.pulse-btn { animation: softPulse 2.5s infinite; }
 
-.pulse-btn {
-  animation: softPulse 2.5s infinite;
+/* Success animation */
+@keyframes popIn {
+  from { opacity: 0; transform: scale(.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+.success-animate { animation: popIn .5s ease-out forwards; }
+
+/* Checkmark */
+.checkmark {
+  width: 72px;
+  height: 72px;
+  margin: 0 auto 1rem;
+}
+.checkmark circle {
+  stroke-dasharray: 166;
+  stroke-dashoffset: 166;
+  animation: stroke 0.6s forwards;
+}
+.checkmark path {
+  stroke-dasharray: 48;
+  stroke-dashoffset: 48;
+  animation: stroke 0.4s 0.6s forwards;
+}
+@keyframes stroke {
+  to { stroke-dashoffset: 0; }
 }
 
-/* Respect reduced motion */
+/* Honeypot */
+.hp { display: none !important; }
+
+/* Sticky CTA */
+.sticky-cta {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 999;
+}
+
+/* Accessibility */
 @media (prefers-reduced-motion: reduce) {
-  .pulse-btn {
-    animation: none;
-  }
+  .pulse-btn, .success-animate { animation: none; }
 }
 </style>
 </head>
@@ -38,23 +71,6 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom">
   <div class="container">
     <a class="navbar-brand fw-bold" href="index.html">DocuVid</a>
-
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="nav">
-      <ul class="navbar-nav ms-auto align-items-lg-center">
-        <li class="nav-item"><a class="nav-link" href="solutions.html">Solutions</a></li>
-        <li class="nav-item"><a class="nav-link" href="samples.html">Samples</a></li>
-        <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
-        <li class="nav-item">
-          <a class="btn btn-primary ms-lg-3 px-3 pulse-btn" href="request-info.html">
-            Request Info
-          </a>
-        </li>
-      </ul>
-    </div>
   </div>
 </nav>
 
@@ -64,63 +80,78 @@
     <div class="content-narrow text-center">
 
       <h1 class="fw-bold">Request Information</h1>
-
       <p class="lead mt-3">
-        Discover how DocuVid transforms complex corporate policies into
-        clear, engaging video explanations your teams actually understand.
+        Transform complex corporate policies into clear, engaging video.
       </p>
 
-      <form
-        class="mt-4"
-        action="https://formspree.io/f/mrebnqzp"
-        method="POST"
-      >
+      <form id="requestForm" class="mt-4">
 
-        <!-- REQUIRED: absolute redirect URL -->
-        <input type="hidden" name="_redirect" value="https://docuvid.org/thank-you.html">
+        <!-- Honeypot -->
+        <input class="hp" name="company" tabindex="-1" autocomplete="off">
 
-        <input
-          class="form-control mb-3"
-          name="name"
-          placeholder="Your name"
-          required
-        >
+        <input class="form-control mb-3" name="name" placeholder="Your name" required>
+        <input class="form-control mb-3" type="email" name="email" placeholder="Work email" required>
+        <textarea class="form-control mb-4" name="message" rows="4" placeholder="Tell us about your organisation" required></textarea>
 
-        <input
-          class="form-control mb-3"
-          type="email"
-          name="email"
-          placeholder="Work email"
-          required
-        >
-
-        <textarea
-          class="form-control mb-4"
-          name="message"
-          rows="4"
-          placeholder="Tell us about your organisation"
-          required
-        ></textarea>
-
-        <button
-          class="btn btn-primary btn-lg px-4 pulse-btn"
-          type="submit"
-        >
+        <button id="submitBtn" class="btn btn-primary btn-lg px-4 pulse-btn">
           Submit Request
         </button>
-
       </form>
+
+      <!-- SUCCESS -->
+      <div id="successMessage" class="d-none mt-4">
+        <svg class="checkmark" viewBox="0 0 52 52">
+          <circle cx="26" cy="26" r="25" fill="none" stroke="#0d6efd" stroke-width="2"/>
+          <path fill="none" stroke="#0d6efd" stroke-width="3" d="M14 27l7 7 16-16"/>
+        </svg>
+        <h3 class="fw-bold">Thank you!</h3>
+        <p class="lead">We’ll be in touch shortly.</p>
+      </div>
 
     </div>
   </div>
 </section>
 
-<footer class="py-4 mt-5">
-  <div class="container text-center text-muted">
-    © 2026 DocuVid · Corporate Policies Explained by Video
-  </div>
-</footer>
+<!-- STICKY CTA -->
+<a href="request-info.html" class="btn btn-primary pulse-btn sticky-cta">
+  Request Info
+</a>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+const form = document.getElementById('requestForm');
+const success = document.getElementById('successMessage');
+const button = document.getElementById('submitBtn');
+
+form.addEventListener('submit', async e => {
+  e.preventDefault();
+  button.disabled = true;
+  button.textContent = 'Sending…';
+
+  const res = await fetch('https://formspree.io/f/mrebnqzp', {
+    method: 'POST',
+    body: new FormData(form),
+    headers: { Accept: 'application/json' }
+  });
+
+  if (res.ok) {
+    form.classList.add('d-none');
+    success.classList.remove('d-none');
+    success.classList.add('success-animate');
+
+    /* Conversion tracking */
+    window.dataLayer = window.dataLayer || [];
+    dataLayer.push({ event: 'request_info_submit' });
+
+    if (window.gtag) {
+      gtag('event', 'conversion', { send_to: 'GA_MEASUREMENT_ID' });
+    }
+  } else {
+    button.disabled = false;
+    button.textContent = 'Submit Request';
+    alert('Submission failed. Please try again.');
+  }
+});
+</script>
+
 </body>
 </html>
