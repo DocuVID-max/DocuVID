@@ -17,7 +17,9 @@ body {
   line-height: 1.6;
 }
 
-/* HEADER */
+/* ================================
+   HEADER
+================================ */
 header {
   background: var(--primary);
   color: white;
@@ -25,12 +27,34 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
 }
 
+/* LOGO LINK */
+.logo-link {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+/* LOGO IMAGE */
+.logo-img {
+  height: 42px;
+  width: auto;
+  display: block;
+}
+
+/* Optional: fallback text if image fails */
 header h1 {
   margin: 0;
   font-size: 1.5rem;
   letter-spacing: 1px;
+}
+
+/* NAVIGATION */
+nav {
+  display: flex;
+  align-items: center;
 }
 
 nav a {
@@ -44,7 +68,13 @@ nav a:hover {
   text-decoration: underline;
 }
 
-/* HERO */
+nav a.active {
+  text-decoration: underline;
+}
+
+/* ================================
+   HERO
+================================ */
 .hero {
   background: linear-gradient(135deg, var(--primary), var(--secondary));
   color: white;
@@ -63,7 +93,9 @@ nav a:hover {
   margin: auto;
 }
 
-/* CONTENT */
+/* ================================
+   CONTENT
+================================ */
 .content {
   max-width: 1000px;
   margin: auto;
@@ -87,7 +119,9 @@ nav a:hover {
   padding-left: 15px;
 }
 
-/* FOOTER */
+/* ================================
+   FOOTER
+================================ */
 footer {
   background: var(--primary);
   color: white;
@@ -96,12 +130,15 @@ footer {
   margin-top: 60px;
 }
 
-/* FORMS */
+/* ================================
+   FORMS
+================================ */
 form {
   max-width: 500px;
 }
 
-input, textarea {
+input,
+textarea {
   width: 100%;
   padding: 12px;
   margin-top: 8px;
@@ -124,9 +161,34 @@ button:hover {
   background: #155a8a;
 }
 
-/* VIDEO GRID */
+/* ================================
+   VIDEO GRID
+================================ */
 .video-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 30px;
+}
+
+/* ================================
+   RESPONSIVE
+================================ */
+@media (max-width: 768px) {
+  header {
+    padding: 20px;
+  }
+
+  nav {
+    margin-top: 15px;
+    width: 100%;
+    justify-content: center;
+  }
+
+  nav a {
+    margin: 0 10px;
+  }
+
+  .logo-img {
+    height: 36px;
+  }
 }
