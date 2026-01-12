@@ -3,6 +3,12 @@
   font-weight: 800;
 }
 
+@media (max-width: 768px) {
+  .navbar-brand {
+    font-size: 2.2rem;
+  }
+}
+
 body { font-family: 'Inter', sans-serif; line-height:1.6; }
 .navbar-brand { font-weight:700; }
 .hero { background: linear-gradient(135deg,#0f2a44,#163d5c); color:white; }
