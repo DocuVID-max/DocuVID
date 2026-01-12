@@ -21,3 +21,8 @@ body { font-family: 'Inter', sans-serif; line-height:1.6; }
 }
 footer { background:#f8f9fa; }
 .card:hover { transform: translateY(-4px); transition:0.3s; }
+
+.navbar .navbar-brand {
+  font-size: 3rem !important;
+  font-weight: 800;
+}
