@@ -14,7 +14,7 @@
 <style>
 /* Subtle pulse animation */
 @keyframes softPulse {
-  0% { box-shadow: 0 0 0 0 rgba(13,110,253,0.5); }
+  0% { box-shadow: 0 0 0 0 rgba(13,110,253,0.45); }
   70% { box-shadow: 0 0 0 10px rgba(13,110,253,0); }
   100% { box-shadow: 0 0 0 0 rgba(13,110,253,0); }
 }
@@ -23,7 +23,7 @@
   animation: softPulse 2.5s infinite;
 }
 
-/* Accessibility: respect reduced motion */
+/* Respect reduced motion */
 @media (prefers-reduced-motion: reduce) {
   .pulse-btn {
     animation: none;
@@ -75,8 +75,9 @@
         action="https://formspree.io/f/mrebnqzp"
         method="POST"
       >
-        <!-- Redirect to thank-you page -->
-        <input type="hidden" name="_redirect" value="thank-you.html">
+
+        <!-- REQUIRED: absolute redirect URL -->
+        <input type="hidden" name="_redirect" value="https://docuvid.org/thank-you.html">
 
         <input
           class="form-control mb-3"
@@ -101,9 +102,13 @@
           required
         ></textarea>
 
-        <button class="btn btn-primary btn-lg px-4 pulse-btn">
+        <button
+          class="btn btn-primary btn-lg px-4 pulse-btn"
+          type="submit"
+        >
           Submit Request
         </button>
+
       </form>
 
     </div>
