@@ -62,3 +62,8 @@ footer { background:#f8f9fa; }
 .navbar .btn-primary:focus {
   animation-play-state: paused;
 }
+@media (prefers-reduced-motion: reduce) {
+  .navbar .btn-primary {
+    animation: none;
+  }
+}
