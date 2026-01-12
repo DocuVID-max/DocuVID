@@ -4,9 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>Request Info | DocuVid</title>
+<title>Request Info | DocuVID</title>
 
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
 
 <style>
 @keyframes softPulse {
@@ -24,11 +25,32 @@
 
 .checkmark { width:72px; margin:0 auto 1rem; }
 .hp { display:none!important; }
+
+@media (prefers-reduced-motion: reduce) {
+  .pulse-btn, .success-animate { animation: none; }
+}
 </style>
 </head>
 
 <body>
 
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom">
+  <div class="container">
+
+    <!-- LOGO -->
+    <a class="navbar-brand" href="index.html">
+      <img
+        src="assets/img/docuvid-logo.png"
+        alt="DocuVID"
+        class="logo-img"
+      >
+    </a>
+
+  </div>
+</nav>
+
+<!-- REQUEST INFO -->
 <section class="py-5 text-center">
   <div class="container" style="max-width:600px">
 
@@ -37,17 +59,38 @@
       Transform complex corporate policies into clear, engaging video.
     </p>
 
-    <!-- FORM (NO SUBMIT CAPABILITY) -->
-    <div id="formWrap">
+    <!-- FORM (UI ONLY) -->
+    <div id="formWrap" class="mt-4">
 
       <input class="hp" id="company">
 
-      <input class="form-control mb-3" id="name" placeholder="Your name">
-      <input class="form-control mb-3" id="email" type="email" placeholder="Work email">
-      <textarea class="form-control mb-4" id="message" rows="4" placeholder="Tell us about your organisation"></textarea>
+      <input
+        class="form-control mb-3"
+        id="name"
+        placeholder="Your name"
+        autocomplete="name"
+      >
 
-      <!-- NOT A SUBMIT BUTTON -->
-      <button id="sendBtn" class="btn btn-primary btn-lg px-4 pulse-btn" type="button">
+      <input
+        class="form-control mb-3"
+        id="email"
+        type="email"
+        placeholder="Work email"
+        autocomplete="email"
+      >
+
+      <textarea
+        class="form-control mb-4"
+        id="message"
+        rows="4"
+        placeholder="Tell us about your organisation"
+      ></textarea>
+
+      <button
+        id="sendBtn"
+        class="btn btn-primary btn-lg px-4 pulse-btn"
+        type="button"
+      >
         Submit Request
       </button>
     </div>
@@ -67,11 +110,12 @@
       </p>
 
       <p>
-        If you have any urgent questions, feel free to reply directly to docu2vid@gmail.com.
+        If you have any urgent questions, feel free to reply directly to
+        <strong>docu2vid@gmail.com</strong>.
       </p>
 
       <p class="mt-4 fw-semibold">
-        — The DocuVid Team<br>
+        — The DocuVID Team<br>
         <a href="https://docuvid.org">docuvid.org</a>
       </p>
 
@@ -93,14 +137,14 @@ document.getElementById("sendBtn").addEventListener("click", function () {
   const success = document.getElementById("successMessage");
   const formWrap = document.getElementById("formWrap");
 
-  /* SHOW THANK YOU (UI ONLY) */
+  // SHOW THANK YOU (UI)
   setTimeout(() => {
     formWrap.classList.add("d-none");
     success.classList.remove("d-none");
     success.classList.add("success-animate");
   }, 500);
 
-  /* BACKGROUND SEND (NO REDIRECT POSSIBLE) */
+  // BACKGROUND SEND (NO REDIRECT)
   const data = new FormData();
   data.append("name", document.getElementById("name").value);
   data.append("email", document.getElementById("email").value);
