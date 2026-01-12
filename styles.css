@@ -45,7 +45,7 @@ body {
 /* Desktop */
 @media (min-width: 992px) {
   .logo-img {
-    height: 64px;
+    height: 200px;
   }
 }
 
