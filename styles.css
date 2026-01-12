@@ -39,29 +39,12 @@ footer { background:#f8f9fa; }
   color: #fff !important;
   opacity: 1 !important;
 
-/* Subtle CTA pulse animation */
-@keyframes ctaPulse {
-  0% {
-    background-color: #0d6efd; /* Bootstrap blue */
-  }
-  50% {
-    background-color: #0b5ed7; /* Darker blue */
-  }
-  100% {
-    background-color: #0d6efd;
-  }
-}
 
 /* Apply only to navbar Request Info button */
 .navbar .btn-primary {
   animation: ctaPulse 4s ease-in-out infinite;
 }
 
-/* Pause animation on hover or focus */
-.navbar .btn-primary:hover,
-.navbar .btn-primary:focus {
-  animation-play-state: paused;
-}
 @media (prefers-reduced-motion: reduce) {
   .navbar .btn-primary {
     animation: none;
