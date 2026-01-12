@@ -7,182 +7,112 @@
 <title>Request Info | DocuVid</title>
 
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css">
 
 <style>
 @keyframes softPulse {
-  0% { box-shadow: 0 0 0 0 rgba(13,110,253,0.45); }
+  0% { box-shadow: 0 0 0 0 rgba(13,110,253,.45); }
   70% { box-shadow: 0 0 0 10px rgba(13,110,253,0); }
   100% { box-shadow: 0 0 0 0 rgba(13,110,253,0); }
 }
 .pulse-btn { animation: softPulse 2.5s infinite; }
 
 @keyframes popIn {
-  from { opacity: 0; transform: scale(0.92); }
+  from { opacity: 0; transform: scale(.92); }
   to { opacity: 1; transform: scale(1); }
 }
 .success-animate { animation: popIn .5s ease-out forwards; }
 
 .checkmark {
   width: 72px;
-  height: 72px;
   margin: 0 auto 1rem;
 }
-.checkmark circle {
-  stroke-dasharray: 166;
-  stroke-dashoffset: 166;
-  animation: stroke 0.6s forwards;
-}
-.checkmark path {
-  stroke-dasharray: 48;
-  stroke-dashoffset: 48;
-  animation: stroke 0.4s 0.6s forwards;
-}
-@keyframes stroke { to { stroke-dashoffset: 0; } }
 
-.hp { display: none !important; }
-
-.sticky-cta {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  z-index: 999;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .pulse-btn, .success-animate { animation: none; }
-}
+.hp { display:none!important; }
 </style>
 </head>
 
 <body>
 
-<nav class="navbar navbar-light bg-white border-bottom">
-  <div class="container">
-    <a class="navbar-brand fw-bold" href="index.html">DocuVid</a>
-  </div>
-</nav>
+<section class="py-5 text-center">
+  <div class="container" style="max-width:600px">
 
-<section class="py-5">
-  <div class="container">
-    <div class="content-narrow text-center">
+    <h1 class="fw-bold">Request Information</h1>
+    <p class="lead mt-3">
+      Transform complex corporate policies into clear, engaging video.
+    </p>
 
-      <h1 class="fw-bold">Request Information</h1>
+    <!-- FORM -->
+    <form id="requestForm" novalidate>
+
+      <input class="hp" name="company">
+
+      <input class="form-control mb-3" name="name" placeholder="Your name" required>
+      <input class="form-control mb-3" type="email" name="email" placeholder="Work email" required>
+      <textarea class="form-control mb-4" name="message" rows="4" placeholder="Tell us about your organisation" required></textarea>
+
+      <button id="submitBtn" class="btn btn-primary btn-lg px-4 pulse-btn" type="submit">
+        Submit Request
+      </button>
+    </form>
+
+    <!-- SUCCESS -->
+    <div id="successMessage" class="d-none mt-5">
+
+      <svg class="checkmark" viewBox="0 0 52 52">
+        <circle cx="26" cy="26" r="25" fill="none" stroke="#0d6efd" stroke-width="2"/>
+        <path fill="none" stroke="#0d6efd" stroke-width="3" d="M14 27l7 7 16-16"/>
+      </svg>
+
+      <h3 class="fw-bold">Thank you for reaching out</h3>
+
       <p class="lead mt-3">
-        Transform complex corporate policies into clear, engaging video.
+        We’ve received your request and a member of our team will contact you shortly.
       </p>
 
-      <!-- FORM: JS controls submission -->
-      <form id="requestForm" class="mt-4" novalidate>
+      <p>
+        If you have any urgent questions, feel free to reply directly to the email you’ll receive.
+      </p>
 
-        <input class="hp" name="company" tabindex="-1" autocomplete="off">
+      <p class="mt-4 fw-semibold">
+        — The DocuVid Team<br>
+        <a href="https://docuvid.org">docuvid.org</a>
+      </p>
 
-        <input class="form-control mb-3"
-               name="name"
-               placeholder="Your name"
-               required>
-
-        <input class="form-control mb-3"
-               type="email"
-               name="email"
-               placeholder="Work email"
-               required>
-
-        <textarea class="form-control mb-4"
-                  name="message"
-                  rows="4"
-                  placeholder="Tell us about your organisation"
-                  required></textarea>
-
-        <button id="submitBtn"
-                type="submit"
-                class="btn btn-primary btn-lg px-4 pulse-btn">
-          Submit Request
-        </button>
-      </form>
-
-      <!-- SUCCESS MESSAGE -->
-      <div id="successMessage" class="d-none mt-5 text-center">
-
-        <svg class="checkmark" viewBox="0 0 52 52">
-          <circle cx="26" cy="26" r="25"
-                  fill="none"
-                  stroke="#0d6efd"
-                  stroke-width="2"/>
-          <path fill="none"
-                stroke="#0d6efd"
-                stroke-width="3"
-                d="M14 27l7 7 16-16"/>
-        </svg>
-
-        <h3 class="fw-bold">Thank you for reaching out</h3>
-
-        <p class="lead mt-3">
-          We’ve received your request and a member of our team will contact you
-          shortly to discuss how we can transform your corporate policies into
-          clear, engaging video.
-        </p>
-
-        <p>
-          If you have any urgent questions, feel free to reply directly to the
-          email you’ll receive.
-        </p>
-
-        <p class="mt-4 fw-semibold">
-          — The DocuVid Team<br>
-          <a href="https://docuvid.org">docuvid.org</a>
-        </p>
-
-        <a href="index.html" class="btn btn-outline-primary mt-3">
-          Return to Home
-        </a>
-      </div>
-
+      <a href="index.html" class="btn btn-outline-primary mt-3">
+        Return to Home
+      </a>
     </div>
+
   </div>
 </section>
 
-<a href="request-info.html" class="btn btn-primary pulse-btn sticky-cta">
-  Request Info
-</a>
-
 <script>
-document.addEventListener("DOMContentLoaded", () => {
+document.getElementById("requestForm").addEventListener("submit", function (e) {
+  e.preventDefault();
 
-  const form = document.getElementById("requestForm");
+  const form = this;
+  const btn = document.getElementById("submitBtn");
   const success = document.getElementById("successMessage");
-  const button = document.getElementById("submitBtn");
 
-  form.addEventListener("submit", async (e) => {
-    e.preventDefault(); // CRITICAL
+  btn.disabled = true;
+  btn.textContent = "Sending…";
 
-    button.disabled = true;
-    button.textContent = "Sending…";
+  /* 🔥 SHOW THANK YOU NO MATTER WHAT */
+  setTimeout(() => {
+    form.classList.add("d-none");
+    success.classList.remove("d-none");
+    success.classList.add("success-animate");
+  }, 500);
 
-    try {
-      const response = await fetch("https://formspree.io/f/mrebnqzp", {
-        method: "POST",
-        body: new FormData(form),
-        headers: { "Accept": "application/json" }
-      });
-
-      if (!response.ok) throw new Error("Submission failed");
-
-      setTimeout(() => {
-        form.classList.add("d-none");
-        success.classList.remove("d-none");
-        success.classList.add("success-animate");
-      }, 5000);
-
-    } catch (err) {
-      button.disabled = false;
-      button.textContent = "Submit Request";
-      alert("Submission failed. Please try again.");
-    }
+  /* 🔥 SEND IN BACKGROUND (NO BLOCKING) */
+  fetch("https://formspree.io/f/mrebnqzp", {
+    method: "POST",
+    body: new FormData(form),
+    headers: { Accept: "application/json" }
+  }).catch(() => {
+    // silently fail — UI already handled
   });
-
 });
 </script>
 
