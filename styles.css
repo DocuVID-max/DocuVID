@@ -50,3 +50,8 @@ footer { background:#f8f9fa; }
     animation: none;
   }
 }
+.content-narrow {
+  max-width: 760px;
+  margin-left: auto;
+  margin-right: auto;
+}
