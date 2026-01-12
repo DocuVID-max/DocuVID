@@ -1,70 +1,126 @@
-.navbar-brand {
-  font-size: 3rem;      /* Increase DocuVid size */
-  font-weight: 800;
+/* ================================
+   GLOBAL TYPOGRAPHY
+================================ */
+body {
+  font-family: 'Inter', sans-serif;
+  line-height: 1.6;
 }
 
+/* ================================
+   NAVBAR
+================================ */
 .navbar {
   position: sticky;
   top: 0;
-  z-index: 1030; /* above content */
-  background: white;
+  z-index: 1030; /* Above page content */
+  background: #ffffff;
 }
 
-@media (max-width: 768px) {
-  .navbar-brand {
-    font-size: 2.2rem;
+/* Brand container (image-based logo) */
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  padding: 0;
+}
+
+/* Logo image */
+.logo-img {
+  height: 36px;      /* Mobile + tablet */
+  width: auto;
+  display: block;
+}
+
+@media (min-width: 992px) {
+  .logo-img {
+    height: 40px;    /* Desktop */
   }
 }
 
-body { font-family: 'Inter', sans-serif; line-height:1.6; }
-.navbar-brand { font-weight:700; }
-.hero { background: linear-gradient(135deg,#0f2a44,#163d5c); color:white; }
-.section-padding { padding: 80px 0; }
-.icon-circle {
-  width:70px; height:70px; border-radius:50%;
-  background:#e7f1ff; display:flex;
-  align-items:center; justify-content:center;
-  margin:0 auto 20px;
-}
-footer { background:#f8f9fa; }
-.card:hover { transform: translateY(-4px); transition:0.3s; }
-
-.navbar .navbar-brand {
-  font-size: 3rem !important;
-  font-weight: 800;
+/* ================================
+   HERO & SECTIONS
+================================ */
+.hero {
+  background: linear-gradient(135deg, #0f2a44, #163d5c);
+  color: white;
 }
 
-.navbar .nav-link.btn-primary {
-  background-color: #0d6efd !important;
-  color: #fff !important;
-  opacity: 1 !important;
-
-
-/* Apply only to navbar Request Info button */
-.navbar .btn-primary {
-  animation: ctaPulse 4s ease-in-out infinite;
+.section-padding {
+  padding: 80px 0;
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .navbar .btn-primary {
-    animation: none;
-  }
-}
 .content-narrow {
   max-width: 760px;
   margin-left: auto;
   margin-right: auto;
 }
-/* Logo styling */
-.logo-img {
-  height: 36px;        /* ideal for navbar */
-  width: auto;
-  display: block;
+
+/* ================================
+   ICONS & CARDS
+================================ */
+.icon-circle {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background: #e7f1ff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px;
 }
 
-/* Slightly larger on desktop */
-@media (min-width: 992px) {
-  .logo-img {
-    height: 40px;
+.card {
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+}
+
+/* ================================
+   FOOTER
+================================ */
+footer {
+  background: #f8f9fa;
+}
+
+/* ================================
+   REQUEST INFO CTA (NAVBAR)
+================================ */
+
+/* Pulse animation */
+@keyframes ctaPulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(13, 110, 253, 0.45);
   }
+  70% {
+    box-shadow: 0 0 0 10px rgba(13, 110, 253, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(13, 110, 253, 0);
+  }
+}
+
+/* Apply only to navbar Request Info button */
+.navbar .btn-primary {
+  background-color: #0d6efd !important;
+  color: #ffffff !important;
+  opacity: 1 !important;
+  animation: ctaPulse 4s ease-in-out infinite;
+}
+
+/* Accessibility: reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .navbar .btn-primary {
+    animation: none;
+  }
+}
+
+/* ================================
+   STICKY FLOATING CTA (OPTIONAL)
+================================ */
+.sticky-cta {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 999;
 }
