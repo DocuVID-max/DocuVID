@@ -24,9 +24,9 @@
   <div class="container">
 
     <!-- LOGO -->
-<a class="navbar-brand d-flex align-items-center" href="index.html">
-  <img src="/assets/img/docuvid-logo.png" class="logo-img" loading="eager">
-</a>
+    <a class="navbar-brand d-flex align-items-center" href="index.html">
+      <img src="/assets/img/docuvid-logo.png" class="logo-img" loading="eager">
+    </a>
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav">
       <span class="navbar-toggler-icon"></span>
@@ -34,15 +34,9 @@
 
     <div class="collapse navbar-collapse" id="nav">
       <ul class="navbar-nav ms-auto align-items-lg-center">
-        <li class="nav-item">
-          <a class="nav-link" href="solutions.html">Solutions</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="samples.html">Samples</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="about.html">About</a>
-        </li>
+        <li class="nav-item"><a class="nav-link" href="solutions.html">Solutions</a></li>
+        <li class="nav-item"><a class="nav-link" href="samples.html">Samples</a></li>
+        <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
         <li class="nav-item">
           <a class="btn btn-primary text-white ms-lg-3 px-3" href="contact.html">
             Request Info
@@ -71,34 +65,68 @@
     <div class="row justify-content-center">
       <div class="col-lg-6">
 
-        <form action="#" method="post" class="bg-white p-4 p-md-5 border rounded">
+        <!-- FORM -->
+        <form
+          action="https://formspree.io/f/YOUR_FORM_ID"
+          method="POST"
+          class="bg-white p-4 p-md-5 border rounded"
+        >
 
+          <!-- Redirect after submit (optional but recommended) -->
+          <input type="hidden" name="_redirect" value="https://docuvid.org/thank-you.html">
+
+          <!-- Full Name -->
           <div class="mb-3">
             <label class="form-label fw-semibold">Full Name</label>
-            <input type="text" class="form-control" required>
+            <input
+              type="text"
+              name="name"
+              class="form-control"
+              required
+            >
           </div>
 
+          <!-- Email -->
           <div class="mb-3">
             <label class="form-label fw-semibold">Work Email</label>
-            <input type="email" class="form-control" required>
+            <input
+              type="email"
+              name="email"
+              class="form-control"
+              required
+            >
           </div>
 
+          <!-- Organisation -->
           <div class="mb-3">
             <label class="form-label fw-semibold">Organisation</label>
-            <input type="text" class="form-control">
+            <input
+              type="text"
+              name="organisation"
+              class="form-control"
+            >
           </div>
 
+          <!-- Message -->
           <div class="mb-3">
-            <label class="form-label fw-semibold">Let us know what your requirements are.</label>
-            <textarea class="form-control" rows="4"></textarea>
+            <label class="form-label fw-semibold">
+              Let us know what your requirements are
+            </label>
+            <textarea
+              name="message"
+              class="form-control"
+              rows="4"
+              required
+            ></textarea>
           </div>
 
+          <!-- Submit -->
           <button type="submit" class="btn btn-primary w-100 mt-3">
             Submit Request
           </button>
 
           <p class="small text-muted mt-3 text-center">
-            All submissions are treated as confidential.
+            All submissions are treated as confidential and POPIA compliant.
           </p>
 
         </form>
@@ -111,7 +139,7 @@
 <!-- FOOTER -->
 <footer class="py-4 mt-5">
   <div class="container text-center text-muted">
-    © 2025 DocuVID · Corporate Policies Clearly Explained by Video
+    © 2026 DocuVID · Corporate Policies Clearly Explained by Video
     <br>
     All information provided is confidential and POPIA compliant.
   </div>
