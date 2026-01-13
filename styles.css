@@ -31,8 +31,8 @@ body {
   top: 0;
   z-index: 1030;
   background-color: #ffffff;
-  padding-top: 8px;
-  padding-bottom: 8px;
+  padding-top: 10px;
+  padding-bottom: 10px;
   border-bottom: 1px solid #dee2e6;
 }
 
@@ -41,8 +41,8 @@ body {
   display: flex;
   align-items: left;
   padding: 0;
-  margin-left: 1rem;
-  line-height: 4; /* CRITICAL: prevents height expansion */
+  margin-left: 0.2rem;
+  line-height: 6; /* CRITICAL: prevents height expansion */
 }
 
 /* =====================================================
