@@ -28,7 +28,7 @@ body {
 ===================================================== */
 .navbar {
   position: sticky;
-  top: 0;
+  top: 3;
   z-index: 1030;
   background-color: #ffffff;
   padding-top: 16px;
