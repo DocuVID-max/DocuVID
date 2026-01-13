@@ -9,6 +9,9 @@
   box-sizing: border-box;
 }
 
+/* ================================
+   BASE
+================================ */
 body {
   margin: 0;
   font-family: "Segoe UI", Roboto, Arial, sans-serif;
@@ -30,28 +33,32 @@ header {
   flex-wrap: wrap;
 }
 
-/* LOGO LINK */
+/* ================================
+   LOGO (ISOLATED SCALING)
+================================ */
 .logo-link {
   display: inline-flex;
   align-items: center;
   text-decoration: none;
+  line-height: 0; /* prevents vertical spacing issues */
 }
 
-/* LOGO IMAGE */
+/*
+  IMPORTANT:
+  Logo scales visually using transform,
+  NOT height — so it never affects layout
+*/
 .logo-img {
-  height: 120px;
+  height: 40px;              /* layout-safe anchor size */
   width: auto;
   display: block;
+  transform: scale(1.6);     /* visual size increase */
+  transform-origin: left center;
 }
 
-/* Optional: fallback text if image fails */
-header h1 {
-  margin: 0;
-  font-size: 1.5rem;
-  letter-spacing: 1px;
-}
-
-/* NAVIGATION */
+/* ================================
+   NAVIGATION
+================================ */
 nav {
   display: flex;
   align-items: center;
@@ -64,10 +71,7 @@ nav a {
   font-weight: 500;
 }
 
-nav a:hover {
-  text-decoration: underline;
-}
-
+nav a:hover,
 nav a.active {
   text-decoration: underline;
 }
@@ -189,9 +193,7 @@ button:hover {
   }
 
   .logo-img {
-    height: 36px;
+    height: 32px;
+    transform: scale(1.4);
   }
 }
-
-
-
