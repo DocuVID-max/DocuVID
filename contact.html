@@ -1,15 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>Contact | DocuVID</title>
+  <title>Contact DocuVID</title>
 
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css">
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Site Styles -->
+  <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
@@ -19,11 +24,12 @@
   <div class="container">
 
     <!-- LOGO -->
-    <a class="navbar-brand" href="index.html">
+    <a class="navbar-brand d-flex align-items-center" href="index.html">
       <img
-        src="assets/img/docuvid-logo.png"
-        alt="DocuVID"
+        src="/img/docuvid-logo.png"
+        alt="DocuVID – Corporate Policies Clearly Explained"
         class="logo-img"
+        loading="eager"
       >
     </a>
 
@@ -33,11 +39,17 @@
 
     <div class="collapse navbar-collapse" id="nav">
       <ul class="navbar-nav ms-auto align-items-lg-center">
-        <li class="nav-item"><a class="nav-link" href="solutions.html">Solutions</a></li>
-        <li class="nav-item"><a class="nav-link" href="samples.html">Samples</a></li>
-        <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
         <li class="nav-item">
-          <a class="btn btn-primary ms-lg-3 px-3" href="request-info.html">
+          <a class="nav-link" href="solutions.html">Solutions</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="samples.html">Samples</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="about.html">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="btn btn-primary text-white ms-lg-3 px-3" href="contact.html">
             Request Info
           </a>
         </li>
@@ -47,35 +59,66 @@
   </div>
 </nav>
 
-<!-- CONTACT CONTENT -->
-<section class="py-5">
+<!-- HERO -->
+<section class="hero section-padding text-center">
+  <div class="container content-narrow">
+    <h1 class="fw-bold">Request Information</h1>
+    <p class="lead mt-3">
+      Tell us about your organisation and the policies you’d like
+      transformed into engaging video training.
+    </p>
+  </div>
+</section>
+
+<!-- CONTACT FORM -->
+<section class="section-padding">
   <div class="container">
-    <div class="content-narrow text-center">
+    <div class="row justify-content-center">
+      <div class="col-lg-6">
 
-      <h1 class="fw-bold">Contact DocuVID</h1>
+        <form action="#" method="post" class="bg-white p-4 p-md-5 border rounded">
 
-      <p class="lead mt-3">
-        Interested in learning how DocuVID can transform your corporate
-        policies into clear, engaging video?
-      </p>
+          <div class="mb-3">
+            <label class="form-label fw-semibold">Full Name</label>
+            <input type="text" class="form-control" required>
+          </div>
 
-      <p class="mt-3">
-        For information, pricing, or general enquiries, please use our
-        Request Info form so we can respond accurately and efficiently.
-      </p>
+          <div class="mb-3">
+            <label class="form-label fw-semibold">Work Email</label>
+            <input type="email" class="form-control" required>
+          </div>
 
-      <a href="request-info.html"
-         class="btn btn-primary btn-lg mt-4 px-5">
-        Request Information
-      </a>
+          <div class="mb-3">
+            <label class="form-label fw-semibold">Organisation</label>
+            <input type="text" class="form-control">
+          </div>
 
+          <div class="mb-3">
+            <label class="form-label fw-semibold">What policies or documents are you interested in?</label>
+            <textarea class="form-control" rows="4"></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary w-100 mt-3">
+            Submit Request
+          </button>
+
+          <p class="small text-muted mt-3 text-center">
+            All submissions are treated as confidential.
+          </p>
+
+        </form>
+
+      </div>
     </div>
   </div>
 </section>
 
+<!-- FOOTER -->
 <footer class="py-4 mt-5">
   <div class="container text-center text-muted">
-    © 2026 DocuVID · Corporate Policies Explained by Video
+    © 2026 DocuVID · Corporate Policies Clearly Explained by Video
+    <br>
+    All information provided is confidential and POPIA compliant.
   </div>
 </footer>
 
