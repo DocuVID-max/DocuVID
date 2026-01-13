@@ -42,7 +42,7 @@ body {
   align-items: left;
   padding: 0;
   margin-left: 0.2rem;
-  line-height: 6; /* CRITICAL: prevents height expansion */
+  line-height: 8; /* CRITICAL: prevents height expansion */
 }
 
 /* =====================================================
@@ -57,7 +57,7 @@ body {
   height: 64px;                 /* layout anchor */
   width: auto;
   display: block;
-  transform: scale(6);          /* 🔥 5× visual size */
+  transform: scale(5);          /* 🔥 5× visual size */
   transform-origin: left;
   pointer-events: none;
 }
