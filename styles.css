@@ -57,7 +57,7 @@ body {
   height: 67px;                 /* layout anchor */
   width: auto;
   display: block;
-  transform: scale(5);          /* 🔥 5× visual size */
+  transform: scale(4);          /* 🔥 5× visual size */
   transform-origin: left;
   pointer-events: auto;
 }
