@@ -1,84 +1,116 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Request Information | DocuVID</title>
+<title>Request Info | DocuVid</title>
 
-  <!-- Bootstrap -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+@keyframes softPulse {
+  0% { box-shadow: 0 0 0 0 rgba(13,110,253,.45); }
+  70% { box-shadow: 0 0 0 10px rgba(13,110,253,0); }
+  100% { box-shadow: 0 0 0 0 rgba(13,110,253,0); }
+}
+.pulse-btn { animation: softPulse 2.5s infinite; }
 
-  <!-- Site Styles -->
-  <link rel="stylesheet" href="styles.css">
+@keyframes popIn {
+  from { opacity: 0; transform: scale(.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+.success-animate { animation: popIn .4s ease-out forwards; }
+
+.checkmark { width:72px; margin:0 auto 1rem; }
+.hp { display:none!important; }
+</style>
 </head>
 
 <body>
 
-<nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom">
-  <div class="container">
-    <a class="navbar-brand d-flex align-items-center" href="index.html">
-      <img src="/assets/img/docuvid-logo.png" class="logo-img" loading="eager">
-    </a>
-  </div>
-</nav>
+<section class="py-5 text-center">
+  <div class="container" style="max-width:600px">
 
-<section class="hero section-padding text-center">
-  <div class="container content-narrow">
     <h1 class="fw-bold">Request Information</h1>
     <p class="lead mt-3">
-      Share a few details and we’ll show you how DocuVID can help.
+      Transform complex corporate policies into clear, engaging video.
     </p>
-  </div>
-</section>
 
-<section class="section-padding">
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="col-lg-6">
+    <!-- FORM (NO SUBMIT CAPABILITY) -->
+    <div id="formWrap">
 
-        <form id="requestForm" class="bg-white p-4 p-md-5 border rounded">
+      <input class="hp" id="company">
 
-          <input type="text" name="name" class="form-control mb-3" placeholder="Full Name" required>
-          <input type="email" name="email" class="form-control mb-3" placeholder="Work Email" required>
-          <input type="text" name="organisation" class="form-control mb-3" placeholder="Organisation">
+      <input class="form-control mb-3" id="name" placeholder="Your name">
+      <input class="form-control mb-3" id="email" type="email" placeholder="Work email">
+      <textarea class="form-control mb-4" id="message" rows="4" placeholder="Tell us about your organisation"></textarea>
 
-          <textarea name="message" class="form-control mb-3" rows="4"
-            placeholder="What documents do you want converted to video?"></textarea>
-
-          <button type="submit" class="btn btn-primary w-100">
-            Submit Request
-          </button>
-
-        </form>
-
-      </div>
+      <!-- NOT A SUBMIT BUTTON -->
+      <button id="sendBtn" class="btn btn-primary btn-lg px-4 pulse-btn" type="button">
+        Submit Request
+      </button>
     </div>
+
+    <!-- SUCCESS -->
+    <div id="successMessage" class="d-none mt-5">
+
+      <svg class="checkmark" viewBox="0 0 52 52">
+        <circle cx="26" cy="26" r="25" fill="none" stroke="#0d6efd" stroke-width="2"/>
+        <path fill="none" stroke="#0d6efd" stroke-width="3" d="M14 27l7 7 16-16"/>
+      </svg>
+
+      <h3 class="fw-bold">Thank you for reaching out</h3>
+
+      <p class="lead mt-3">
+        We’ve received your request and a member of our team will contact you shortly.
+      </p>
+
+      <p>
+        If you have any urgent questions, feel free to reply directly to the email you’ll receive.
+      </p>
+
+      <p class="mt-4 fw-semibold">
+        — The DocuVid Team<br>
+        <a href="https://docuvid.org">docuvid.org</a>
+      </p>
+
+      <a href="index.html" class="btn btn-outline-primary mt-3">
+        Return to Home
+      </a>
+    </div>
+
   </div>
 </section>
-
-<footer class="py-4 mt-5 text-center text-muted">
-  © 2026 DocuVID
-</footer>
 
 <script>
-document.getElementById("requestForm").addEventListener("submit", async function (e) {
-  e.preventDefault();
+document.getElementById("sendBtn").addEventListener("click", function () {
 
-  const response = await fetch("https://formspree.io/f/mrebnqzp", {
+  const btn = this;
+  btn.disabled = true;
+  btn.textContent = "Sending…";
+
+  const success = document.getElementById("successMessage");
+  const formWrap = document.getElementById("formWrap");
+
+  /* SHOW THANK YOU (UI ONLY) */
+  setTimeout(() => {
+    formWrap.classList.add("d-none");
+    success.classList.remove("d-none");
+    success.classList.add("success-animate");
+  }, 500);
+
+  /* BACKGROUND SEND (NO REDIRECT POSSIBLE) */
+  const data = new FormData();
+  data.append("name", document.getElementById("name").value);
+  data.append("email", document.getElementById("email").value);
+  data.append("message", document.getElementById("message").value);
+
+  fetch("https://formspree.io/f/mrebnqzp", {
     method: "POST",
-    body: new FormData(this),
-    headers: { "Accept": "application/json" }
-  });
-
-  if (response.ok) {
-    window.location.href = "/thank-you.html";
-  } else {
-    alert("Submission failed. Please try again.");
-  }
+    body: data,
+    headers: { Accept: "application/json" }
+  }).catch(() => {});
 });
 </script>
 
