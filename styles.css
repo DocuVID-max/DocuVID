@@ -54,10 +54,10 @@ body {
   transform scales visually only.
 */
 .logo-img {
-  height: 40px;                 /* layout anchor */
+  height: 64px;                 /* layout anchor */
   width: auto;
   display: block;
-  transform: scale(5);          /* 🔥 5× visual size */
+  transform: scale(10);          /* 🔥 5× visual size */
   transform-origin: left center;
   pointer-events: none;
 }
