@@ -23,7 +23,6 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom">
   <div class="container">
 
-    <!-- LOGO -->
     <a class="navbar-brand d-flex align-items-center" href="index.html">
       <img src="/assets/img/docuvid-logo.png" class="logo-img" loading="eager">
     </a>
@@ -38,9 +37,7 @@
         <li class="nav-item"><a class="nav-link" href="samples.html">Samples</a></li>
         <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
         <li class="nav-item">
-          <a class="btn btn-primary text-white ms-lg-3 px-3" href="contact.html">
-            Request Info
-          </a>
+          <a class="btn btn-primary ms-lg-3 px-3" href="contact.html">Request Info</a>
         </li>
       </ul>
     </div>
@@ -53,13 +50,12 @@
   <div class="container content-narrow">
     <h1 class="fw-bold">Request Information</h1>
     <p class="lead mt-3">
-      Tell us about your organisation and the policies you’d like
-      transformed into engaging video training.
+      Tell us about your organisation and the policies you’d like transformed into engaging video training.
     </p>
   </div>
 </section>
 
-<!-- CONTACT FORM -->
+<!-- FORM -->
 <section class="section-padding">
   <div class="container">
     <div class="row justify-content-center">
@@ -83,9 +79,7 @@
           </div>
 
           <div class="mb-3">
-            <label class="form-label fw-semibold">
-              Let us know what your requirements are
-            </label>
+            <label class="form-label fw-semibold">Message</label>
             <textarea name="message" class="form-control" rows="4" required></textarea>
           </div>
 
@@ -94,7 +88,7 @@
           </button>
 
           <p class="small text-muted mt-3 text-center">
-            All submissions are treated as confidential and POPIA compliant.
+            All submissions are confidential and POPIA compliant.
           </p>
 
         </form>
@@ -104,45 +98,32 @@
   </div>
 </section>
 
-<!-- FOOTER -->
 <footer class="py-4 mt-5">
   <div class="container text-center text-muted">
     © 2026 DocuVID · Corporate Policies Clearly Explained by Video
-    <br>
-    All information provided is confidential and POPIA compliant.
   </div>
 </footer>
 
-<!-- Bootstrap JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
-<!-- Formspree AJAX Submission -->
 <script>
-  const form = document.getElementById("contactForm");
+document.getElementById("contactForm").addEventListener("submit", async function (e) {
+  e.preventDefault();
 
-  form.addEventListener("submit", async function (e) {
-    e.preventDefault();
+  const formData = new FormData(this);
 
-    const formData = new FormData(form);
-
-    try {
-      const response = await fetch("https://formspree.io/f/mrebnqzp", {
-        method: "POST",
-        body: formData,
-        headers: {
-          "Accept": "application/json"
-        }
-      });
-
-      if (response.ok) {
-        window.location.href = "/thank-you.html";
-      } else {
-        alert("There was a problem submitting the form. Please try again.");
-      }
-    } catch (error) {
-      alert("Network error. Please try again later.");
-    }
+  const response = await fetch("https://formspree.io/f/mrebnqzp", {
+    method: "POST",
+    body: formData,
+    headers: { "Accept": "application/json" }
   });
+
+  if (response.ok) {
+    window.location.href = "/thank-you.html";
+  } else {
+    alert("Submission failed. Please try again.");
+  }
+});
 </script>
 
 </body>
