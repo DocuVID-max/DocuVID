@@ -57,7 +57,7 @@ body {
 .logo-img {
   height: 64px;        /* Layout-safe base size */
   width: auto;
-  transform: scale(1.1); /* Visually enlarges logo */
+  transform: scale(1.6); /* Visually enlarges logo */
   transform-origin: left center;
 }
 
