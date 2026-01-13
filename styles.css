@@ -39,10 +39,10 @@ body {
 /* Brand container — locks layout */
 .navbar-brand {
   display: flex;
-  align-items: center;
+  align-items: left;
   padding: 0;
   margin-right: 1rem;
-  line-height: 0; /* CRITICAL: prevents height expansion */
+  line-height: 2; /* CRITICAL: prevents height expansion */
 }
 
 /* =====================================================
@@ -54,11 +54,11 @@ body {
   transform scales visually only.
 */
 .logo-img {
-  height: 64px;                 /* layout anchor */
+  height: 72px;                 /* layout anchor */
   width: auto;
   display: block;
-  transform: scale(10);          /* 🔥 5× visual size */
-  transform-origin: left center;
+  transform: scale(7);          /* 🔥 5× visual size */
+  transform-origin: left;
   pointer-events: none;
 }
 
