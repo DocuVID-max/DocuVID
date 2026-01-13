@@ -1,35 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>Request Info | DocuVID</title>
+  <title>Request Information | DocuVID</title>
 
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-<link rel="stylesheet" href="styles.css">
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
 
-<style>
-@keyframes softPulse {
-  0% { box-shadow: 0 0 0 0 rgba(13,110,253,.45); }
-  70% { box-shadow: 0 0 0 10px rgba(13,110,253,0); }
-  100% { box-shadow: 0 0 0 0 rgba(13,110,253,0); }
-}
-.pulse-btn { animation: softPulse 2.5s infinite; }
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 
-@keyframes popIn {
-  from { opacity: 0; transform: scale(.95); }
-  to { opacity: 1; transform: scale(1); }
-}
-.success-animate { animation: popIn .4s ease-out forwards; }
-
-.checkmark { width:72px; margin:0 auto 1rem; }
-.hp { display:none!important; }
-
-@media (prefers-reduced-motion: reduce) {
-  .pulse-btn, .success-animate { animation: none; }
-}
-</style>
+  <!-- Site Styles -->
+  <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
@@ -39,124 +24,119 @@
   <div class="container">
 
     <!-- LOGO -->
-    <a class="navbar-brand" href="index.html">
+    <a class="navbar-brand d-flex align-items-center" href="index.html">
       <img
-        src="assets/img/docuvid-logo.png"
-        alt="DocuVID"
+        src="/img/docuvid-logo.png"
+        alt="DocuVID – Corporate Policies Clearly Explained"
         class="logo-img"
+        loading="eager"
       >
     </a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="nav">
+      <ul class="navbar-nav ms-auto align-items-lg-center">
+        <li class="nav-item">
+          <a class="nav-link" href="solutions.html">Solutions</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="samples.html">Samples</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="about.html">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="btn btn-primary text-white ms-lg-3 px-3" href="request-info.html">
+            Request Info
+          </a>
+        </li>
+      </ul>
+    </div>
 
   </div>
 </nav>
 
-<!-- REQUEST INFO -->
-<section class="py-5 text-center">
-  <div class="container" style="max-width:600px">
-
+<!-- HERO -->
+<section class="hero section-padding text-center">
+  <div class="container content-narrow">
     <h1 class="fw-bold">Request Information</h1>
     <p class="lead mt-3">
-      Transform complex corporate policies into clear, engaging video.
+      Share a few details and we’ll show you how DocuVID can transform
+      your policies into clear, engaging training videos.
     </p>
-
-    <!-- FORM (UI ONLY) -->
-    <div id="formWrap" class="mt-4">
-
-      <input class="hp" id="company">
-
-      <input
-        class="form-control mb-3"
-        id="name"
-        placeholder="Your name"
-        autocomplete="name"
-      >
-
-      <input
-        class="form-control mb-3"
-        id="email"
-        type="email"
-        placeholder="Work email"
-        autocomplete="email"
-      >
-
-      <textarea
-        class="form-control mb-4"
-        id="message"
-        rows="4"
-        placeholder="Tell us about your organisation"
-      ></textarea>
-
-      <button
-        id="sendBtn"
-        class="btn btn-primary btn-lg px-4 pulse-btn"
-        type="button"
-      >
-        Submit Request
-      </button>
-    </div>
-
-    <!-- SUCCESS -->
-    <div id="successMessage" class="d-none mt-5">
-
-      <svg class="checkmark" viewBox="0 0 52 52">
-        <circle cx="26" cy="26" r="25" fill="none" stroke="#0d6efd" stroke-width="2"/>
-        <path fill="none" stroke="#0d6efd" stroke-width="3" d="M14 27l7 7 16-16"/>
-      </svg>
-
-      <h3 class="fw-bold">Thank you for reaching out</h3>
-
-      <p class="lead mt-3">
-        We’ve received your request and a member of our team will contact you shortly.
-      </p>
-
-      <p>
-        If you have any urgent questions, feel free to reply directly to
-        <strong>docu2vid@gmail.com</strong>.
-      </p>
-
-      <p class="mt-4 fw-semibold">
-        — The DocuVID Team<br>
-        <a href="https://docuvid.org">docuvid.org</a>
-      </p>
-
-      <a href="index.html" class="btn btn-outline-primary mt-3">
-        Return to Home
-      </a>
-    </div>
-
   </div>
 </section>
 
-<script>
-document.getElementById("sendBtn").addEventListener("click", function () {
+<!-- FORM -->
+<section class="section-padding">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-6">
 
-  const btn = this;
-  btn.disabled = true;
-  btn.textContent = "Sending…";
+        <form class="bg-white p-4 p-md-5 border rounded">
 
-  const success = document.getElementById("successMessage");
-  const formWrap = document.getElementById("formWrap");
+          <div class="mb-3">
+            <label class="form-label fw-semibold">Full Name</label>
+            <input type="text" class="form-control" required>
+          </div>
 
-  // SHOW THANK YOU (UI)
-  setTimeout(() => {
-    formWrap.classList.add("d-none");
-    success.classList.remove("d-none");
-    success.classList.add("success-animate");
-  }, 500);
+          <div class="mb-3">
+            <label class="form-label fw-semibold">Work Email</label>
+            <input type="email" class="form-control" required>
+          </div>
 
-  // BACKGROUND SEND (NO REDIRECT)
-  const data = new FormData();
-  data.append("name", document.getElementById("name").value);
-  data.append("email", document.getElementById("email").value);
-  data.append("message", document.getElementById("message").value);
+          <div class="mb-3">
+            <label class="form-label fw-semibold">Organisation</label>
+            <input type="text" class="form-control">
+          </div>
 
-  fetch("https://formspree.io/f/mrebnqzp", {
-    method: "POST",
-    body: data,
-    headers: { Accept: "application/json" }
-  }).catch(() => {});
-});
-</script>
+          <div class="mb-3">
+            <label class="form-label fw-semibold">Your Role</label>
+            <select class="form-select">
+              <option selected>Select role</option>
+              <option>HR / People Ops</option>
+              <option>Compliance / Risk</option>
+              <option>IT / Security</option>
+              <option>Operations</option>
+              <option>Executive / Management</option>
+              <option>Other</option>
+            </select>
+          </div>
 
+          <div class="mb-3">
+            <label class="form-label fw-semibold">
+              What type of documents do you want converted to video?
+            </label>
+            <textarea class="form-control" rows="4"></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary w-100 mt-3">
+            Submit Request
+          </button>
+
+          <p class="small text-muted mt-3 text-center">
+            We respect your privacy. All information is confidential and POPIA compliant.
+          </p>
+
+        </form>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="py-4 mt-5">
+  <div class="container text-center text-muted">
+    © 2026 DocuVID · Corporate Policies Clearly Explained by Video
+    <br>
+    All information provided is confidential and POPIA compliant.
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
