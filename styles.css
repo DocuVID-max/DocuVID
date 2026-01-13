@@ -41,7 +41,7 @@ body {
   height: 40px;                 /* layout-safe anchor */
   width: auto;
   display: block;
-  transform: scale(1.6);        /* visual size */
+  transform: scale(5);        /* visual size */
   transform-origin: left center;
 }
 
