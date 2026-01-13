@@ -1,16 +1,31 @@
-/* ================================
-   GLOBAL TYPOGRAPHY
-================================ */
-body {
-  font-family: 'Inter', sans-serif;
-  line-height: 1.6;
-  color: #212529;
-  margin: 0;
+/* =====================================================
+   CSS VARIABLES
+===================================================== */
+:root {
+  --primary: #0b3c5d;
+  --secondary: #1f6fa8;
+  --light: #f4f8fc;
+  --dark: #243447;
 }
 
-/* ================================
-   NAVBAR
-================================ */
+/* =====================================================
+   GLOBAL RESET & TYPOGRAPHY
+===================================================== */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', "Segoe UI", Roboto, Arial, sans-serif;
+  background: var(--light);
+  color: var(--dark);
+  line-height: 1.6;
+}
+
+/* =====================================================
+   NAVBAR (BOOTSTRAP)
+===================================================== */
 .navbar {
   position: sticky;
   top: 0;
@@ -18,55 +33,42 @@ body {
   background-color: #ffffff;
   padding-top: 4px;
   padding-bottom: 4px;
+  border-bottom: 1px solid #dee2e6;
 }
 
-/* Brand container */
+/* Brand container — locks layout */
 .navbar-brand {
   display: flex;
   align-items: center;
   padding: 0;
   margin-right: 1rem;
-  line-height: 0; /* prevents vertical logo spacing */
+  line-height: 0; /* CRITICAL: prevents height expansion */
 }
 
-/* ================================
-   LOGO (SAFE SCALING — NO LAYOUT SHIFT)
-================================ */
+/* =====================================================
+   LOGO — VISUAL SCALE ONLY (NO LAYOUT SHIFT)
+===================================================== */
 /*
-  Base height anchors layout.
-  transform scales visually without
-  affecting navbar height or borders.
+  DO NOT increase height.
+  Height anchors layout.
+  transform scales visually only.
 */
 .logo-img {
-  height: 40px;                 /* layout-safe anchor */
+  height: 40px;                 /* layout anchor */
   width: auto;
   display: block;
-  transform: scale(5);        /* visual size */
+  transform: scale(5);          /* 🔥 5× visual size */
   transform-origin: left center;
+  pointer-events: none;
 }
 
-/* Tablet */
-@media (min-width: 768px) {
-  .logo-img {
-    height: 44px;
-    transform: scale(1.6);
-  }
-}
-
-/* Desktop */
-@media (min-width: 992px) {
-  .logo-img {
-    height: 48px;
-    transform: scale(1.6);
-  }
-}
-
-/* ================================
+/* =====================================================
    HERO & SECTIONS
-================================ */
+===================================================== */
 .hero {
   background: linear-gradient(135deg, #0f2a44, #163d5c);
   color: #ffffff;
+  text-align: center;
 }
 
 .section-padding {
@@ -84,9 +86,9 @@ body {
   margin-right: auto;
 }
 
-/* ================================
+/* =====================================================
    ICONS & CARDS
-================================ */
+===================================================== */
 .icon-circle {
   width: 70px;
   height: 70px;
@@ -108,9 +110,9 @@ body {
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
 }
 
-/* ================================
+/* =====================================================
    FEATURE LIST
-================================ */
+===================================================== */
 .feature-list {
   max-width: 760px;
   margin: 60px auto;
@@ -121,17 +123,76 @@ body {
   margin-bottom: 12px;
 }
 
-/* ================================
+/* =====================================================
+   CONTENT (NON-BOOTSTRAP PAGES)
+===================================================== */
+.content {
+  max-width: 1000px;
+  margin: auto;
+  padding: 60px 20px;
+}
+
+.note {
+  margin-top: 30px;
+  font-size: 0.95rem;
+  color: #555;
+  border-left: 4px solid var(--secondary);
+  padding-left: 15px;
+}
+
+/* =====================================================
+   FORMS
+===================================================== */
+form {
+  max-width: 500px;
+}
+
+input,
+textarea {
+  width: 100%;
+  padding: 12px;
+  margin-top: 8px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+button {
+  background: var(--secondary);
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  cursor: pointer;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+button:hover {
+  background: #155a8a;
+}
+
+/* =====================================================
+   VIDEO GRID
+===================================================== */
+.video-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+}
+
+/* =====================================================
    FOOTER
-================================ */
+===================================================== */
 footer {
   background-color: #f8f9fa;
   font-size: 0.95rem;
+  text-align: center;
+  padding: 20px;
 }
 
-/* ================================
+/* =====================================================
    REQUEST INFO CTA (NAVBAR)
-================================ */
+===================================================== */
 @keyframes ctaPulse {
   0% {
     box-shadow: 0 0 0 0 rgba(13, 110, 253, 0.45);
@@ -144,7 +205,6 @@ footer {
   }
 }
 
-/* Apply ONLY to navbar primary CTA */
 .navbar .btn-primary {
   background-color: #0d6efd !important;
   color: #ffffff !important;
@@ -152,16 +212,15 @@ footer {
   animation: ctaPulse 4s ease-in-out infinite;
 }
 
-/* Accessibility: reduced motion */
 @media (prefers-reduced-motion: reduce) {
   .navbar .btn-primary {
     animation: none;
   }
 }
 
-/* ================================
-   STICKY FLOATING CTA (OPTIONAL)
-================================ */
+/* =====================================================
+   OPTIONAL FLOATING CTA
+===================================================== */
 .sticky-cta {
   position: fixed;
   bottom: 20px;
