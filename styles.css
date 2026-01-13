@@ -54,7 +54,7 @@ body {
   transform scales visually only.
 */
 .logo-img {
-  height: 88px;                 /* layout anchor */
+  height: 95px;                 /* layout anchor */
   width: auto;
   display: block;
   transform: scale(5);          /* 🔥 5× visual size */
