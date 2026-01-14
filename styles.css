@@ -227,3 +227,26 @@ footer {
   right: 20px;
   z-index: 999;
 }
+
+/* FIX MOBILE NAVBAR CLICK ISSUE */
+.logo-img {
+  height: 36px;
+  width: auto;
+}
+
+.navbar-brand {
+  max-width: 70%;
+  padding: 0;
+}
+
+/* Ensure hamburger is always clickable */
+.navbar-toggler {
+  z-index: 1050;
+}
+
+/* Prevent logo from overlapping menu */
+@media (max-width: 991px) {
+  .navbar-brand {
+    flex-grow: 0;
+  }
+}
