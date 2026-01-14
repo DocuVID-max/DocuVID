@@ -76,7 +76,7 @@ body {
   }
 
   .logo-img {
-    max-height: 76px;          /* visual logo size */
+    max-height: 52px;          /* visual logo size */
     width: auto;
     transform: none;           /* remove scaling on mobile */
   }
