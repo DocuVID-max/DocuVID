@@ -76,7 +76,7 @@ body {
   }
 
   .logo-img {
-    max-height: 52px;          /* visual logo size */
+    max-height: 76px;          /* visual logo size */
     width: auto;
     transform: none;           /* remove scaling on mobile */
   }
@@ -250,7 +250,7 @@ footer {
 
 /* FIX MOBILE NAVBAR CLICK ISSUE */
 .logo-img {
-  height: 52px;
+  height: 76px;
   width: auto;
 }
 
