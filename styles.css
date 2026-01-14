@@ -250,3 +250,15 @@ footer {
     flex-grow: 0;
   }
 }
+
+/* MOBILE NAVBAR COLLAPSE FIX — PREVENT LOGO OVERLAP */
+@media (max-width: 991px) {
+  .navbar {
+    align-items: flex-start;
+  }
+
+  .navbar-collapse {
+    width: 100%;
+    margin-top: 8px;
+  }
+}
